@@ -1,25 +1,30 @@
 #pragma once
 #include "Camera.h"
 
-#define WINDOW_X_POSITION 100
-#define WINDOW_Y_POSITION 100
-#define WINDOW_HEIGHT 320
-#define WINDOW_WIDTH 320
-#define APP_NAME "Train Crash"
-
 class GLContext
 {
 private:
-	Camera * _camera;
-
+	const static int WINDOW_X_POSITION = 100;
+	const static int WINDOW_Y_POSITION = 100;
+	const static int WINDOW_HEIGHT = 320;
+	const static int WINDOW_WIDTH = 320;
+protected:
+	static GLContext * _context;
+	Camera * _camera;	
 public:
 	GLContext(int * argc, char ** argv);
 	~GLContext(void);
+	void SetContext (GLContext * context);
 	void Start ();
 
 private:
 	void Draw (void);
-	void KeyboardHandler (int, int, int);
+	static void DrawWrapper (void);
+
+	void HandleKeyPress (int, int, int);
+	static void HandleKeyPressWrapper (int, int, int);
+
 	void ChangeSize (int, int);
+	static void ChangeSizeWrapper (int, int);
 };
 

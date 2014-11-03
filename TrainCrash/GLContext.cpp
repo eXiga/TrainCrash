@@ -1,19 +1,19 @@
 #include "GLContext.h"
 #include <GL/freeglut.h>
-#include <functional>
+
+GLContext *GLContext::_context = NULL; 
 
 GLContext::GLContext(int * argc, char ** argv) {
-	using namespace std::placeholders;
-
 	glutInit(argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(WINDOW_X_POSITION, WINDOW_Y_POSITION);	
 	glutInitWindowSize(WINDOW_HEIGHT, WINDOW_WIDTH);
-	glutCreateWindow(APP_NAME);
-	glutDisplayFunc(std::bind(&GLContext::Draw, this, _1));
-	glutIdleFunc(Draw);
-	glutSpecialFunc(KeyboardHandler);
-	glutReshapeFunc(ChangeSize);
+	glutCreateWindow("Train crash");
+	glutDisplayFunc(DrawWrapper);
+	glutDisplayFunc(DrawWrapper);
+	glutIdleFunc(DrawWrapper);
+	glutSpecialFunc(HandleKeyPressWrapper);
+	glutReshapeFunc(ChangeSizeWrapper);
 	glEnable(GL_DEPTH_TEST);
 
 	this->_camera = new Camera ();
@@ -21,6 +21,10 @@ GLContext::GLContext(int * argc, char ** argv) {
 
 GLContext::~GLContext(void) {
 
+}
+
+void GLContext::SetContext(GLContext * context) {
+	_context = context;
 }
 
 void drawSnowMan() {
@@ -55,7 +59,7 @@ void GLContext::Draw() {
 	glLoadIdentity();
 	// Set the camera
 	gluLookAt(	this->_camera->GetPositionX(), 1.0f, this->_camera->GetPositionZ(),
-		x+lx, 1.0f,  z+lz,
+		this->_camera->GetPositionX() + this->_camera->GetVectorX(), 1.0f,  this->_camera->GetPositionZ() + this->_camera->GetVectorZ(),
 		0.0f, 1.0f,  0.0f);
 
 	// Draw ground
@@ -79,8 +83,29 @@ void GLContext::Draw() {
 		glutSwapBuffers();
 }
 
-void GLContext::KeyboardHandler(int key, int x, int y) {
+void GLContext::DrawWrapper() {
+	_context->Draw();
+}
 
+void GLContext::HandleKeyPress(int key, int x, int y) {
+	switch (key) {
+	case GLUT_KEY_LEFT :
+		this->_camera->TurnLeft();
+		break;
+	case GLUT_KEY_RIGHT :
+		this->_camera->TurnRight();
+		break;
+	case GLUT_KEY_UP :
+		this->_camera->TurnUp();
+		break;
+	case GLUT_KEY_DOWN :
+		this->_camera->TurnDown();
+		break;
+	}
+}
+
+void GLContext::HandleKeyPressWrapper(int key, int x, int y) {
+	_context->HandleKeyPress(key, x, y);
 }
 
 void GLContext::ChangeSize(int width, int height) {
@@ -94,6 +119,10 @@ void GLContext::ChangeSize(int width, int height) {
 	glViewport(0, 0, width, height);
 	gluPerspective(45, ratio, 1, 100);
 	glMatrixMode(GL_MODELVIEW);
+}
+
+void GLContext::ChangeSizeWrapper(int width, int height) {
+	_context->ChangeSize(width, height);
 }
 
 void GLContext::Start() {
