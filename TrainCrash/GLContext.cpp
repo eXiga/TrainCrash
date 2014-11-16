@@ -15,16 +15,22 @@ GLContext::GLContext(int * argc, char ** argv) {
 	glutSpecialFunc(HandleKeyPressWrapper);
 	glutReshapeFunc(ChangeSizeWrapper);
 	glEnable(GL_DEPTH_TEST);
-
-	this->_camera = new Camera ();
 }
 
 GLContext::~GLContext(void) {
-
+	
 }
 
 void GLContext::SetContext(GLContext * context) {
 	_context = context;
+}
+
+Camera* GLContext::GetCamera() {
+	return this->_camera;
+}
+
+void GLContext::SetCamera (Camera * camera) {
+	this->_camera = camera;
 }
 
 void drawSnowMan() {

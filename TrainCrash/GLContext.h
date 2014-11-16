@@ -17,6 +17,9 @@ public:
 	void SetContext (GLContext * context);
 	void Start ();
 
+	Camera* GetCamera ();
+	void SetCamera (Camera * camera);
+
 private:
 	void Draw (void);
 	static void DrawWrapper (void);
