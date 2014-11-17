@@ -40,8 +40,6 @@ void GLContext::Draw() {
  	this->_camera->Look(this->_camera->GetPositionX(), 1.0f, this->_camera->GetPositionZ(),
  		this->_camera->GetPositionX() + this->_camera->GetVectorX(), 1.0f,  this->_camera->GetPositionZ() + this->_camera->GetVectorZ(),
  		0.0f, 1.0f,  0.0f);
-	
-	
 	this->_skybox->Draw();
 
 	glutSwapBuffers();

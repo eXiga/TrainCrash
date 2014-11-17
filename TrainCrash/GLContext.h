@@ -7,8 +7,8 @@ class GLContext
 private:
 	const static int WINDOW_X_POSITION = 100;
 	const static int WINDOW_Y_POSITION = 100;
-	const static int WINDOW_HEIGHT = 600;
-	const static int WINDOW_WIDTH = 800;
+	const static int WINDOW_HEIGHT = 800;
+	const static int WINDOW_WIDTH = 600;
 protected:
 	static GLContext * _context;
 	Camera * _camera;
