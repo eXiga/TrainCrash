@@ -79,10 +79,10 @@ void Skybox::DrawRightFace() {
 void Skybox::DrawUpFace() {
 	glBindTexture(GL_TEXTURE_2D, this->_textures[4].GetTextureId());
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(X_POSITION + WIDTH, Y_POSITION + HEIGHT, Z_POSITION);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(X_POSITION + WIDTH, Y_POSITION + HEIGHT, Z_POSITION + LENGTH);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(X_POSITION, Y_POSITION + HEIGHT,Z_POSITION + LENGTH);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(X_POSITION, Y_POSITION + HEIGHT, Z_POSITION);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(X_POSITION + WIDTH, Y_POSITION + HEIGHT, Z_POSITION);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(X_POSITION + WIDTH, Y_POSITION + HEIGHT, Z_POSITION + LENGTH);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(X_POSITION, Y_POSITION + HEIGHT,Z_POSITION + LENGTH);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(X_POSITION, Y_POSITION + HEIGHT, Z_POSITION);
 	glEnd();
 }
 
