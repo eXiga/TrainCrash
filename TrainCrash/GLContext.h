@@ -7,8 +7,8 @@ class GLContext
 private:
 	const static int WINDOW_X_POSITION = 100;
 	const static int WINDOW_Y_POSITION = 100;
-	const static int WINDOW_HEIGHT = 320;
-	const static int WINDOW_WIDTH = 320;
+	const static int WINDOW_HEIGHT = 600;
+	const static int WINDOW_WIDTH = 800;
 protected:
 	static GLContext * _context;
 	Camera * _camera;
@@ -19,9 +19,8 @@ public:
 	void SetContext (GLContext * context);
 	void Start ();
 
-	Camera* GetCamera ();
 	void SetCamera (Camera * camera);
-
+	void SetSkybox (Skybox * skybox);
 private:
 	void Draw (void);
 	static void DrawWrapper (void);

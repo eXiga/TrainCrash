@@ -15,7 +15,6 @@ GLContext::GLContext(int * argc, char ** argv) {
 	glutReshapeFunc(ChangeSizeWrapper);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
-	this->_skybox = new Skybox();
 }
 
 GLContext::~GLContext(void) {
@@ -26,8 +25,8 @@ void GLContext::SetContext(GLContext * context) {
 	_context = context;
 }
 
-Camera* GLContext::GetCamera() {
-	return this->_camera;
+void GLContext::SetSkybox(Skybox * skybox) {
+	_skybox = skybox;
 }
 
 void GLContext::SetCamera (Camera * camera) {
@@ -38,7 +37,7 @@ void GLContext::Draw() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
- 	gluLookAt(	this->_camera->GetPositionX(), 1.0f, this->_camera->GetPositionZ(),
+ 	this->_camera->Look(this->_camera->GetPositionX(), 1.0f, this->_camera->GetPositionZ(),
  		this->_camera->GetPositionX() + this->_camera->GetVectorX(), 1.0f,  this->_camera->GetPositionZ() + this->_camera->GetVectorZ(),
  		0.0f, 1.0f,  0.0f);
 	

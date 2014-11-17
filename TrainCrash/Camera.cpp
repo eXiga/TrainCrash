@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include <math.h>
+#include <gl/freeglut.h>
 
 Camera::Camera(void) {
 	this->angle = 0.0f;
@@ -11,6 +12,12 @@ Camera::Camera(void) {
 
 Camera::~Camera(void) {
 
+}
+
+void Camera::Look(double eyex, double eyey, double eyez, double centerx, double centery, double centerz, double upx, double upy, double upz) {
+	gluLookAt(eyex, eyey, eyez,
+		centerx, centery, centerz,
+		upx, upy, upz);
 }
 
 void Camera::TurnLeft() {
