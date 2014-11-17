@@ -1,5 +1,6 @@
 #pragma once
 #include "Camera.h"
+#include "Skybox.h"
 
 class GLContext
 {
@@ -10,7 +11,8 @@ private:
 	const static int WINDOW_WIDTH = 320;
 protected:
 	static GLContext * _context;
-	Camera * _camera;	
+	Camera * _camera;
+	Skybox * _skybox;
 public:
 	GLContext(int * argc, char ** argv);
 	~GLContext(void);
