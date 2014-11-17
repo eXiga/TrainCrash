@@ -1,6 +1,7 @@
 #pragma once
 #include "Camera.h"
 #include "Skybox.h"
+#include "Terrain.h"
 
 class GLContext
 {
@@ -13,6 +14,7 @@ protected:
 	static GLContext * _context;
 	Camera * _camera;
 	Skybox * _skybox;
+	Terrain * _terrain;
 public:
 	GLContext(int * argc, char ** argv);
 	~GLContext(void);
@@ -21,6 +23,7 @@ public:
 
 	void SetCamera (Camera * camera);
 	void SetSkybox (Skybox * skybox);
+	void SetTerrain (Terrain * terrain);
 private:
 	void Draw (void);
 	static void DrawWrapper (void);

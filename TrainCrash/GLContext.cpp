@@ -33,6 +33,10 @@ void GLContext::SetCamera (Camera * camera) {
 	this->_camera = camera;
 }
 
+void GLContext::SetTerrain (Terrain * terrain) {
+	this->_terrain = terrain;
+}
+
 void GLContext::Draw() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -41,6 +45,7 @@ void GLContext::Draw() {
  		this->_camera->GetPositionX() + this->_camera->GetVectorX(), 1.0f,  this->_camera->GetPositionZ() + this->_camera->GetVectorZ(),
  		0.0f, 1.0f,  0.0f);
 	this->_skybox->Draw();
+	this->_terrain->Draw();
 
 	glutSwapBuffers();
 }
