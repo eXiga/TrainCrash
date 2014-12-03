@@ -14,7 +14,7 @@ Terrain::~Terrain(void)
 
 void Terrain::Draw() {
 	glPushMatrix();
-	glTranslatef(0.0f, -8.0f, 0.0f);
+	glTranslatef(0.0f, -6.0f, 0.0f);
 	glBindTexture(GL_TEXTURE_2D, this->_terrainTexture->GetTextureId());
 	glBegin(GL_QUADS);
 		glTexCoord2f(1.0f, 0.0f); glVertex3f(-100.0f, 0.0f, -100.0f);

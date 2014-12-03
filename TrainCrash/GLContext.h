@@ -2,19 +2,22 @@
 #include "Camera.h"
 #include "Skybox.h"
 #include "Terrain.h"
+#include "Model.h"
 
 class GLContext
 {
 private:
 	const static int WINDOW_X_POSITION = 100;
 	const static int WINDOW_Y_POSITION = 100;
-	const static int WINDOW_HEIGHT = 800;
-	const static int WINDOW_WIDTH = 600;
+	const static int WINDOW_HEIGHT = 1366;
+	const static int WINDOW_WIDTH = 768;
 protected:
 	static GLContext * _context;
 	Camera * _camera;
 	Skybox * _skybox;
 	Terrain * _terrain;
+	Model * _train;
+	Model * _car;
 public:
 	GLContext(int * argc, char ** argv);
 	~GLContext(void);
@@ -33,5 +36,8 @@ private:
 
 	void ChangeSize (int, int);
 	static void ChangeSizeWrapper (int, int);
+	
+	void RegenerateShadowMap();
+	void myDisplay();
 };
 

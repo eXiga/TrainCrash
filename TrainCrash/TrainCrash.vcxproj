@@ -20,7 +20,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\ImageMagick\include;C:\GLUT\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\soil\Simple OpenGL Image Library\lib;C:\ImageMagick\lib;C:\GLUT\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\GLUT\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\soil\Simple OpenGL Image Library\lib;C:\GLUT\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -79,20 +79,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GLContext.cpp" />
-    <ClCompile Include="GLM.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelOBJ.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GLContext.h" />
-    <ClInclude Include="GLM.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelOBJ.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="SOIL.h" />
     <ClInclude Include="Terrain.h" />
