@@ -16,9 +16,6 @@ Model::Model(char * filename)
 	_model.import(filename);
 	_model.normalize();
 
-	// Load any associated textures.
-	// Note the path where the textures are assumed to be located.
-
 	const ModelOBJ::Material *pMaterial = 0;
 	GLuint textureId = 0;
 	std::string::size_type offset = 0;
@@ -85,8 +82,6 @@ GLuint Model::LoadTexture(const char *pszFilename)
 
 	if (bitmap.loadPicture(pszFilename))
 	{
-		// The Bitmap class loads images and orients them top-down.
-		// OpenGL expects bitmap images to be oriented bottom-up.
 		bitmap.flipVertical();
 
 		glGenTextures(1, &id);
@@ -107,11 +102,10 @@ GLuint Model::LoadTexture(const char *pszFilename)
 
 Model::~Model(void)
 {
-	//glmDelete(this->_model);
+	this->_model.destroy();
 }
 
 void Model::Draw() {
-	//glmDraw(this->_model, GLM_SMOOTH |  GLM_MATERIAL);
 	const ModelOBJ::Mesh *pMesh = 0;
 	const ModelOBJ::Material *pMaterial = 0;
 	const ModelOBJ::Vertex *pVertices = 0;
@@ -173,8 +167,4 @@ void Model::Draw() {
 		if (_model.hasPositions())
 			glDisableClientState(GL_VERTEX_ARRAY);
 	}
-}
-
-void Model::Scale(float scaleFactor) {
-	//glmScale(this->_model, scaleFactor);
 }

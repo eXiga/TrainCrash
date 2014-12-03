@@ -7,9 +7,6 @@ GLContext *GLContext::_context = NULL;
 bool should = false;
 double maxHeight;
 
-
-
-
 GLContext::GLContext(int * argc, char ** argv) {
 	glutInit(argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGB);
@@ -23,7 +20,6 @@ GLContext::GLContext(int * argc, char ** argv) {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 	this->_train = new Model("../Content/Models/Train/train_enginecar.obj");
-	this->_train->Scale(2);
 	this->_car = new Model("../Content/Models/Car/carA_84sedan.obj");
 }
 

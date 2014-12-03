@@ -13,7 +13,6 @@ public:
 	Model(char * filename);
 	~Model(void);
 	void Draw ();
-	void Scale (float scaleFactor);
 private:
 	GLuint LoadTexture(const char *pszFilename);
 };
